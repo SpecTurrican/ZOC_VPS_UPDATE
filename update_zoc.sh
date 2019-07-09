@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get install jq -y
+
 COIN="zeroone"
 UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.5/"
 FILENAME="zeroonecore-0.12.3.5-x86_64-linux-gnu.tar.gz"
@@ -14,7 +16,6 @@ prepair () {
 
 	# apt-get update && apt-get -y upgrade
 	
-	apt-get install jq -y
 	cd /root/
 	wget ${UPDATE_URL}${FILENAME}
 	tar -xzvf $FILENAME && rm ${FILENAME}
