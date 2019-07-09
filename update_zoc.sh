@@ -60,10 +60,11 @@ ${COIN_SERVICE} stop
 	while ${COIN_SERVICE} getinfo >/dev/null 2>&1; do
 		error=$(${COIN_SERVICE} getinfo 2>&1 | cut -d: -f4 | tr -d "}")
 		echo " ... ${COIN}.service is on : ${error}"
+		sleep 3
 	done
 
 	echo "${COIN}.service is shutdown !"
-	sleep 10
+	sleep 20
 
 
 }
