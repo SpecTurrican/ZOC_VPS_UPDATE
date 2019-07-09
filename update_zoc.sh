@@ -13,7 +13,8 @@ UPDATE_VERSION="120305"
 prepair () {
 
 	# apt-get update && apt-get -y upgrade
-
+	
+	apt-get install jq -y
 	cd /root/
 	wget ${UPDATE_URL}${FILENAME}
 	tar -xzvf $FILENAME && rm ${FILENAME}
