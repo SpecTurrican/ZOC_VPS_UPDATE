@@ -1,3 +1,3 @@
 # ZeroOne VPS UPDATE
 
-wget -qO - | bash
+wget -qO - https://raw.githubusercontent.com/SpecTurrican/ZOC_VPS_UPDATE/master/update_zoc.sh | bash
