@@ -26,6 +26,7 @@ prepair () {
 
 update () {
 
+	sleep 1
 	cp ${SOURCE}${COIN_DEAMON} $TARGET
 	cp ${SOURCE}${COIN_SERVICE} $TARGET
 
@@ -47,6 +48,7 @@ checkrunning () {
 	done
 
 	echo "${COIN}.service is running !"
+	sleep 2
 
 
 }
@@ -66,7 +68,7 @@ ${COIN_SERVICE} stop
 	done
 
 	echo "${COIN}.service is shutdown !"
-	sleep 10
+	sleep 5
 
 
 }
@@ -76,7 +78,7 @@ crontab_off () {
 	rm crontab.txt >/dev/null
 	crontab -l >> crontab.txt
 	crontab -r
-	# '#' am Anfang jeder Zeile einfügen
+	# '#' Insert at the beginning of each line
 	sed -i 's@^@#@g' crontab.txt
 	crontab -i crontab.txt
 
@@ -86,7 +88,7 @@ crontab_off () {
 crontab_on () {
 
 	crontab -r
-	# '#' am Anfang jeder Zeile entfernen
+	# '#' Remove at the beginning of each line
 	sed -i 's@^#@@g' crontab.txt
 	crontab -i crontab.txt
 	rm crontab.txt >/dev/null
