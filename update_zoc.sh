@@ -124,9 +124,7 @@ done
 
 }
 
-if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ]
-
-	then
+if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ] ; then
 
 		prepair
 		crontab_off
