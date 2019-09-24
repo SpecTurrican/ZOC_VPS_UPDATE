@@ -1,17 +1,18 @@
 #!/bin/bash
 
-apt-get update && apt-get -y upgrade
+apt-get update
+apt-get autoremove -y && apt-get autoclean -y
 apt-get -y install jq >/dev/null
 
 COIN="zeroone"
-UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.6-rc/"
+UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.6/"
 FILENAME="zeroonecore-0.12.3.6-x86_64-linux-gnu.tar.gz"
 COIN_SERVICE="${COIN}-cli"
 COIN_DEAMON="${COIN}d"
 SOURCE_CLEAN="/root/zeroonecore-0.12.3/"
 SOURCE="${SOURCE_CLEAN}bin/"
 TARGET="/usr/local/bin/"
-INSTALLED_VERSION="$(${COIN_SERVICE} getinfo | jq .version)"
+#INSTALLED_VERSION="$(${COIN_SERVICE} getinfo | jq .version)"
 UPDATE_VERSION="120306"
 
 prepair () {
@@ -121,9 +122,9 @@ done
 
 }
 
-if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ]
-
-	then
+#if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ]
+#
+#	then
 
 		prepair
 		crontab_off
@@ -138,8 +139,8 @@ if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ]
 		rm ${SOURCE_CLEAN} -r >/dev/null
 		echo "update finish"
 
-	else
-
-		echo "no update"
+#	else
+#
+#		echo "no update"
 
 fi
