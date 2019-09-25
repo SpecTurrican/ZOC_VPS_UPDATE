@@ -124,7 +124,7 @@ done
 
 }
 
-if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ] ; then
+#if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ] ; then
 
 		prepair
 		crontab_off
@@ -139,8 +139,8 @@ if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ] ; then
 		rm ${SOURCE_CLEAN} -r >/dev/null
 		echo "update finish"
 
-	else
+#	else
 
 		echo "no update"
 
-fi
+#fi
