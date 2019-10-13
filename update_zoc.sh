@@ -6,8 +6,8 @@ apt-get -y install jq >/dev/null
 apt-get autoremove -y && apt-get autoclean -y
 
 COIN="zeroone"
-UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.6/"
-FILENAME="zeroonecore-0.12.3.6-x86_64-linux-gnu.tar.gz"
+UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.7-rc/"
+FILENAME="zeroonecore-0.12.3.7-x86_64-linux-gnu.tar.gz"
 COIN_SERVICE="${COIN}-cli"
 COIN_DEAMON="${COIN}d"
 SOURCE_CLEAN="/root/zeroonecore-0.12.3/"
