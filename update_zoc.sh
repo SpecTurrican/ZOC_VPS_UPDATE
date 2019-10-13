@@ -9,12 +9,12 @@ COIN="zeroone"
 UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.7-rc/"
 FILENAME="zeroonecore-0.12.3.7-x86_64-linux-gnu.tar.gz"
 COIN_SERVICE="${COIN}-cli"
-COIN_DEAMON="${COIN}d"
+COIN_DEAMON="${COIN}d -assumevalid=00000000370e7eb476c94ac49f0e226f905d0ab1815b379794e8eb0f36cc3119"
 SOURCE_CLEAN="/root/zeroonecore-0.12.3/"
 SOURCE="${SOURCE_CLEAN}bin/"
 TARGET="/usr/local/bin/"
 INSTALLED_VERSION="$(${COIN_SERVICE} -version | cut -d " " -f6)"
-UPDATE_VERSION="v0.12.3.6-2E9C2w32"
+UPDATE_VERSION="v0.12.3.7-2EA1Dw40"
 
 prepair () {
 
