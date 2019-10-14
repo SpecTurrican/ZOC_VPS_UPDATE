@@ -162,7 +162,7 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 
 }
 
-if [ "$INSTALLED_VERSION"=="$UPDATE_VERSION" ] ; then
+if [ "$INSTALLED_VERSION" -eq "$UPDATE_VERSION" ] ; then
 
 	echo "no update needed :)"
 	checkblockcount
