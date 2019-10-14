@@ -163,22 +163,22 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 
 }
 
-if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ] ; then
+if [ "$INSTALLED_VERSION"=="$UPDATE_VERSION" ] ; then
 
-		prepair
-		checkblockcount
-		crontab_off
-		checkshutdown
-		update
-		crontab_on
-		# Start
-		${COIN_DEAMON}
-		checkrunning
-		mnsync
-		echo "update finish"
-
-	else
-
-		echo "no update"
+	echo "no update"
+		
+else
+		
+	prepair
+	checkblockcount
+	crontab_off
+	checkshutdown
+	update
+	crontab_on
+	# Start
+	${COIN_DEAMON}
+	checkrunning
+	mnsync
+	echo "update finish"
 
 fi
