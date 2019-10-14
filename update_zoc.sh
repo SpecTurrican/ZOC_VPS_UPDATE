@@ -2,7 +2,7 @@
 
 apt-get update
 apt-get upgrade -y
-apt-get -y install jq
+apt-get -y install jq curl zip
 apt-get autoremove -y && apt-get autoclean -y
 
 COIN="zeroone"
@@ -10,6 +10,7 @@ UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.7-r
 FILENAME="zeroonecore-0.12.3.7-x86_64-linux-gnu.tar.gz"
 BLOCKCHAIN_URL="https://files.01coin.io/mainnet/"
 BLOCKCHAIN_FILE="bootstrap.dat.zip"
+BLOCKHIGH_API="https://explorer.01coin.io/api/getblockcount"
 COIN_SERVICE="${COIN}-cli"
 COIN_DEAMON="${COIN}d -assumevalid=00000000370e7eb476c94ac49f0e226f905d0ab1815b379794e8eb0f36cc3119"
 SOURCE_ZOC="/root/.zeroonecore/"
@@ -101,6 +102,7 @@ crontab_on () {
 
 
 }
+
 mnsync () {
 
 mnsy=$(${COIN_SERVICE} mnsync status | jq .AssetName | tr -d '"')
@@ -127,9 +129,44 @@ done
 
 }
 
+checkblockcount () {
+
+get_blockhigh=$(curl ${$BLOCKHIGH_API})
+
+	echo "  The current blockhigh on the net is now : ${get_blockhigh} ..."
+
+get_blockcount=$(${COIN_SERVICE} getblockcount)
+
+	echo "  The current blockhigh on the wallet is now : ${get_blockcount} ..."
+
+	if [ ${get_blockcount} = ${get_blockhigh} ]
+	
+	then
+	
+		echo "Wallet is synched !!!"
+		sleep 3
+		break
+
+	else
+
+		echo "Wallet is not synched ..."
+		echo "Now reloading the blockchain ..."
+		sleep 2
+		checkshutdown
+		cd $SOURCE_ZOC
+		rm -rf blocks chainstate database fee_estimates.dat mempool.dat netfulfilled.dat db.log governance.dat mncache.dat peers* .lock zerooned.pid banlist.dat debug.log mnpayments.dat
+		wget ${BLOCKCHAIN_URL}${BLOCKCHAIN_FILE}
+		unzip ${BLOCKCHAIN_FILE} && rm ${BLOCKCHAIN_FILE}
+
+done
+
+
+}
+
 if [ "$INSTALLED_VERSION" -lt "$UPDATE_VERSION" ] ; then
 
 		prepair
+		checkblockcount
 		crontab_off
 		checkshutdown
 		update
