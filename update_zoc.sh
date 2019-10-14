@@ -131,7 +131,7 @@ done
 
 checkblockcount () {
 
-get_blockhigh=(curl ${$BLOCKHIGH_API})
+get_blockhigh=$(curl $BLOCKHIGH_API)
 
 	echo "  The current blockhigh on the net is now : ${get_blockhigh} ..."
 
