@@ -145,7 +145,6 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 	
 		echo "Wallet is synched !!!"
 		sleep 3
-		break
 
 	else
 
