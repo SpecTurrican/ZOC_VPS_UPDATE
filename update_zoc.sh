@@ -160,8 +160,6 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 	
 	fi
 
-done
-
 
 }
 
