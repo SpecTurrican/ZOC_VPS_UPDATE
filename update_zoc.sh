@@ -165,7 +165,8 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 
 if [ "$INSTALLED_VERSION"=="$UPDATE_VERSION" ] ; then
 
-	echo "no update"
+	echo "no update needed :)"
+	checkblockcount
 		
 else
 		
@@ -179,6 +180,6 @@ else
 	${COIN_DEAMON}
 	checkrunning
 	mnsync
-	echo "update finish"
+	echo "update finish !!!"
 
 fi
