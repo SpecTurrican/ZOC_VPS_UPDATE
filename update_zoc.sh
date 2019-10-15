@@ -156,6 +156,7 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 		rm -rf blocks chainstate database fee_estimates.dat mempool.dat netfulfilled.dat db.log governance.dat mncache.dat peers* .lock zerooned.pid banlist.dat debug.log mnpayments.dat
 		wget ${BLOCKCHAIN_URL}${BLOCKCHAIN_FILE}
 		unzip ${BLOCKCHAIN_FILE} && rm ${BLOCKCHAIN_FILE}
+		cd /root/
 	
 	fi
 
