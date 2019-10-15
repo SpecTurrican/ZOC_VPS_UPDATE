@@ -139,7 +139,7 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 
 	echo "  The current blockhigh on the wallet is now : ${get_blockcount} ..."
 
-	if [ ${get_blockcount} -eq ${get_blockhigh} ]
+	if [ $get_blockcount = $get_blockhigh ]
 	
 	then
 	
@@ -162,7 +162,7 @@ get_blockcount=$(${COIN_SERVICE} getblockcount)
 
 }
 
-if [ "$INSTALLED_VERSION" -eq "$UPDATE_VERSION" ] ; then
+if [ $INSTALLED_VERSION = $UPDATE_VERSION ] ; then
 
 	echo "no update needed :)"
 	checkblockcount
@@ -170,8 +170,8 @@ if [ "$INSTALLED_VERSION" -eq "$UPDATE_VERSION" ] ; then
 else
 		
 	prepair
-	checkblockcount
 	crontab_off
+	checkblockcount
 	checkshutdown
 	update
 	crontab_on
