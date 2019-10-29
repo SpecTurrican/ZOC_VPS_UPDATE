@@ -6,7 +6,7 @@ apt-get -y install jq curl zip
 apt-get autoremove -y && apt-get autoclean -y
 
 COIN="zeroone"
-UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.7-rc/"
+UPDATE_URL="https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.7/"
 FILENAME="zeroonecore-0.12.3.7-x86_64-linux-gnu.tar.gz"
 BLOCKCHAIN_URL="https://files.01coin.io/mainnet/"
 BLOCKCHAIN_FILE="bootstrap.dat.zip"
@@ -18,7 +18,7 @@ SOURCE_CLEAN="/root/zeroonecore-0.12.3/"
 SOURCE="${SOURCE_CLEAN}bin/"
 TARGET="/usr/local/bin/"
 INSTALLED_VERSION="$(${COIN_SERVICE} -version | cut -d " " -f6)"
-UPDATE_VERSION="v0.12.3.7-2EA1Dw40"
+UPDATE_VERSION="v0.12.3.7-2EA2Bw42"
 
 prepair () {
 
